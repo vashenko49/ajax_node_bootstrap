@@ -1,10 +1,10 @@
 # folder ignore
 */.idea/
+homework1
+homework2
+homework3
 homework4_optional
 #files ignore
-1/
-2/
-3/
 *.iml
 *.xml
 README.md
