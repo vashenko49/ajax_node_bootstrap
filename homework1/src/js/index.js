@@ -1,25 +1,14 @@
-import {Api} from "./api";
+import {FilmApi} from "./filmApi";
+import {DOMmanagement} from "./DOMmanagement";
 
-let get = new Api();
+let get = new FilmApi();
 
-// let response = get.getUseXMLHttpRequest('https://swapi.co/api/films/');
-// let response = get.getUseFetch('https://swapi.co/api/films/');
-// let response = get.getUseAxios('https://swapi.co/api/films/');
-let responsefilm = get.getUseJqueryAjax('https://swapi.co/api/films/');
-let response = get.getUseJqueryGet('https://swapi.co/api/people/1/');
+let loader = new DOMmanagement();
 
-response
-    .then((response)=> {
-        console.log(response);
-    })
-    .finally(response=>{
-        console.log('finally');
-    });
 
-responsefilm
-    .then((response)=> {
-        console.log(response.results);
-    })
-    .finally(response=>{
-        console.log('finally');
-    });
+
+document.body.appendChild(loader.renderLoader());
+
+console.log(get.getFilms('https://swapi.co/api/films/'));
+
+console.log(get.getCharacters('https://swapi.co/api/people/1/'));

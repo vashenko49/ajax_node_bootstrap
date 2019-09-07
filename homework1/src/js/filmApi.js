@@ -1,10 +1,18 @@
+import {Api} from "./api";
 
-class FilmApi extends Api{
-    getFilms(){
+export class FilmApi extends Api{
+    getFilms(url){
         //можно менять способ получения данных
-        let objFilms = super.getUseXMLHttpRequest()
+         return  super.getUseXMLHttpRequest(url).then((response)=> {
+             return response;
+         })
     }
-    getCharacters(){
+
+    getCharacters(url){
+        return super.getUseAxios(url);
+    }
+
+    renderLoader(){
 
     }
 }

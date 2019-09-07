@@ -13,7 +13,7 @@ let ifElse = require('gulp-if-else');
 
 
 
-let isDevelopment = false;
+let isDevelopment = true;
 
 let webPackConfig = {
     output:{

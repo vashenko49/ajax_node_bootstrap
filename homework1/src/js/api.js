@@ -1,12 +1,11 @@
-const axios = require('axios');
-const $ = require('jquery');
+import $ from 'jquery';
+import axios from 'axios';
 
 export class Api {
 
     getUseXMLHttpRequest(url) {
         let xhr = new XMLHttpRequest();
-
-        return new Promise(function (resolve, reject) {
+        return new Promise(function (resolve) {
             xhr.addEventListener('loadend', function () {
                 if(xhr.status===200){
                     resolve(xhr.response)
@@ -52,9 +51,6 @@ export class Api {
             }).done(result=>{
                 resolve(result);
             })
-
-
         })
-
     }
 }
