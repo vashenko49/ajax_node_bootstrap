@@ -4,15 +4,7 @@ export class FilmApi extends Api{
     getFilms(url){
         //можно менять способ получения данных
          return  super.getUseXMLHttpRequest(url).then((response)=> {
-             return response;
+             return response.results;
          })
-    }
-
-    getCharacters(url){
-        return super.getUseAxios(url);
-    }
-
-    renderLoader(){
-
     }
 }

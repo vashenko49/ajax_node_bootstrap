@@ -9,10 +9,13 @@ export class DOMmanagement {
         return loader;
     }
 
-    generateElementt(tag, classes){
+    generateElementt(tag, classes, text){
         let elenent = document.createElement(tag);
         if(Array.isArray(classes)){
             elenent.classList.add(...classes)
+        }
+        if(text){
+            elenent.innerHTML = text;
         }
         return elenent;
     }
