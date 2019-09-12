@@ -5,17 +5,16 @@ export class Api {
 
     getUseXMLHttpRequest(url) {
         let xhr = new XMLHttpRequest();
-        return new Promise(function (resolve) {
+        return new Promise(function (resolve, reject) {
             xhr.addEventListener('loadend', function () {
                 if(xhr.status===200){
                     resolve(xhr.response)
                 }else{
-                    console.log('ERROR');
+                    reject('ERROR')
                 }
             });
             xhr.open('GET', url);
             xhr.responseType = 'json';
-            xhr.send();
         });
     }
 
@@ -27,11 +26,17 @@ export class Api {
             .then((res)=>{
                 return res;
             })
+            .catch(e=>{
+                throw e;
+            })
     }
      getUseAxios(url){
         return axios.get(url)
             .then(result =>{
                 return result.data;
+            })
+            .catch(e=>{
+                throw e;
             });
     }
     getUseJqueryGet(url){
@@ -39,7 +44,9 @@ export class Api {
             $.get(url)
                 .done(result=>{
                     resolve(result)
-                })
+                }).error(e=>{
+                    throw e;
+            })
         })
     }
 
@@ -50,6 +57,8 @@ export class Api {
                 url
             }).done(result=>{
                 resolve(result);
+            }).error(e=>{
+                throw e;
             })
         })
     }

@@ -4,7 +4,6 @@ import {CharactersAPI} from './API/charactersAPI'
 import {CharacterItem} from "./item/characterItem";
 import {DOMmanagement} from "./DOMmanagement";
 
-
 window.addEventListener('load', function () {
     let film =  new FilmApi();
     let character = new CharactersAPI();
@@ -34,9 +33,20 @@ window.addEventListener('load', function () {
                         resp.forEach(element=>{
                             card.appendChild(element)
                         });
-                    })
+                    }).catch(e=>{
+                        let error = dom.generateElementt('h1','error',e);
+                        card.lastElementChild.remove();
+                        card.appendChild(error);
+                    });
                 })
             }
+        })
+        .catch(e=>{
+            mainLoader.remove();
+            let h1 = document.createElement('h1');
+            h1.innerHTML = e;
+            document.body.append(h1);
+            console.log(e);
         });
 });
 
